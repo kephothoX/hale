@@ -15,8 +15,6 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as api_ from "../api.js";
-import type * as haleAI from "../haleAI.js";
-import type * as haleAIActions from "../haleAIActions.js";
 import type * as http from "../http.js";
 import type * as pangeaAuth from "../pangeaAuth.js";
 import type * as pangeaAuthActions from "../pangeaAuthActions.js";
@@ -40,8 +38,6 @@ import type * as squareQueries from "../squareQueries.js";
  */
 declare const fullApi: ApiFromModules<{
   api: typeof api_;
-  haleAI: typeof haleAI;
-  haleAIActions: typeof haleAIActions;
   http: typeof http;
   pangeaAuth: typeof pangeaAuth;
   pangeaAuthActions: typeof pangeaAuthActions;
