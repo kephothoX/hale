@@ -98,7 +98,7 @@ export class ViewComponent implements OnInit {
 
   AddressType: string[] = ['PHYSICAL', 'MOBILE'];
 
-  API_KEY: string = 'AIzaSyCF0eMDF9WX-Hx-OqL-v-C7TgRskObv-Js';
+  API_KEY: string = '*********';
 
   MapChoice: string = '';
 

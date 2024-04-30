@@ -26,7 +26,7 @@ export class LocationsComponent implements OnInit {
 
   AddressType: string[] = ['PHYSICAL', 'MOBILE'];
 
-  API_KEY: string = 'AIzaSyCF0eMDF9WX-Hx-OqL-v-C7TgRskObv-Js';
+  API_KEY: string = '*******';
 
   Locations: Location[] = [];
   displayedColumns: string[] = ['name', 'description', 'phone_number', 'type', 'status', 'id'];

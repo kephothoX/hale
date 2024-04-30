@@ -39,7 +39,7 @@ export class NewLocationComponent implements OnInit {
 
   AddressType: string[] = ['PHYSICAL', 'MOBILE'];
 
-  API_KEY: string = 'AIzaSyAl_DYkNKfbDLyXEB925p0OUJzYnsOMJOo';
+  API_KEY: string = '*****';
 
   MapChoice: string = '';
 
