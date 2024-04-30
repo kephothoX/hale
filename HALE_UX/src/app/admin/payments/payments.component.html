@@ -1,0 +1,152 @@
+<section class="container-fluid">
+    <h2>Checkout Payments</h2>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header (click)=getCheckoutPaymentLinks()>
+                <mat-panel-title>
+                    <h2>Payment Links</h2>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Generated Payments Links
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-card class="card mat-elevation-z8">
+                <mat-card-content *ngIf="PaymentLinks">
+                    <div class="table-responsive">
+                        <mat-table matSort cdkDropList cdkDropListOrientation="horizontal"
+                            (cdkDropListDropped)="drop($event)" class="mat-elevation-z8 table" cdkDrag
+                            [dataSource]="PaymentLinks">
+
+
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef>ID </mat-header-cell>
+                                <mat-cell *matCellDef="let element">
+
+                                    {{ element.id }} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="support_email">
+                                <mat-header-cell *matHeaderCellDef>Support Email</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.checkout_options?.merchant_support_email
+                                    }} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="long_url">
+                                <mat-header-cell *matHeaderCellDef>Payment Link</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{ element.long_url }}
+                                 </mat-cell>
+                            </ng-container>
+
+
+
+                            <ng-container matColumnDef="actions">
+                                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                                <mat-cell *matCellDef="let element" class="text-primary">
+
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
+                            <mat-row (click)="clickedRows.add(row)" [class.table-row-clicked]="clickedRows.has(row)"
+                                *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+                        </mat-table>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-footer>
+                    <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="pageLength"
+                        [pageSize]="pageSize" showFirstLastButtons aria-label="Select Products"></mat-paginator>
+                </mat-card-footer>
+            </mat-card>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2>Generate Payment Link</h2>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Generate Payments Link
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card class="card mat-elevation-z6">
+                <mat-card-content>
+
+                    <form [formGroup]="requestPaymentForm" (ngSubmit)="ngOnRequestPayment()"
+                        class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12"
+                        enctype="application/x-www-form-url-encoded">
+                        <ng-template matStepLabel>Request Payment</ng-template>
+
+                        <mat-card-title>
+                            <h2>Create New Payment Link</h2>
+                        </mat-card-title>
+
+                        <mat-form-field appearance="outline" class="p-1">
+                            <mat-label>Name</mat-label>
+                            <mat-icon matPrefix class="material-icons">info</mat-icon>
+                            <mat-hint align="end">Name as it will appear On Checkout Page</mat-hint>
+                            <input type="text" matInput formControlName="name" placeholder="Checkout Name">
+                        </mat-form-field>
+                        <div class="spacer"></div>
+
+                        <mat-form-field appearance="outline" class="p-1">
+                            <mat-label>Amount</mat-label>
+                            <mat-icon matPrefix class="material-icons">paid</mat-icon>
+                            <mat-hint align="end"></mat-hint>
+                            <input type="number" matInput formControlName="amount" placeholder="Amount">
+                        </mat-form-field>
+                        <div class="spacer"></div>
+
+                        <mat-form-field appearance="outline" class="p-1">
+                            <mat-label>Feedback Email</mat-label>
+                            <mat-icon matPrefix class="material-icons">email</mat-icon>
+                            <mat-hint align="end">Email Address for customer to get back to you</mat-hint>
+                            <input type="email" email="true" matInput formControlName="email"
+                                placeholder="Your Valid Email Address">
+                        </mat-form-field>
+                        <div class="spacer"></div>
+
+
+
+                        <mat-card-actions class="align-buttons-center mat-elevation-z4">
+                            <button mat-raised-button color="accent" class="text-white" type="submit"
+                                [disabled]="!requestPaymentForm.valid">
+                                <mat-icon class="material-symbols-outlined">monetization_on</mat-icon>
+                                Request Payment
+                            </button>
+                            <button mat-raised-button color="warn" class="text-white" type="reset">
+                                <mat-icon class="material-symbols-outlined">clear</mat-icon>
+                                Reset
+                            </button>
+                        </mat-card-actions>
+                    </form>
+
+                </mat-card-content>
+            </mat-card>
+
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h2>Invoice</h2>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Generate Invoice
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <mat-card class="card mat-elevation-z4">
+                <mat-card-content clas="mat-raised-z6">
+                    <app-generate-invoice></app-generate-invoice>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+    </mat-accordion>
+</section>

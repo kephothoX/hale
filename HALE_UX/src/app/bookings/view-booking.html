@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>New Appointment</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card class="card mat-elevation-z6">
+        <mat-card-content *ngIf="Booking">
+            <ul class="list-group list-group-flush">
+
+
+                <li class="list-group-item">All Day?:   {{ Booking.all_day }} </li>
+
+                <li class="list-group-item">Team Member?:  {{ Booking.appointment_segments[0].any_team_member }} </li>
+                <li class="list-group-item">Duration:  {{ Booking.appointment_segments[0].duration_minutes }} </li>
+                <li class="list-group-item">Intermission Minutes:  {{ Booking.appointment_segments[0].intermission_minutes }} </li>
+                <li class="list-group-item"> {{ Booking.appointment_segments[0].service_variation_id }} </li>
+                <li class="list-group-item"> {{ Booking.appointment_segments[0].service_variation_version }} </li>
+                <li class="list-group-item"> {{ Booking.appointment_segments[0].team_member_id }} </li>
+
+                <li class="list-group-item">Created At:  {{ Booking.created_at }} </li>
+
+                <li class="list-group-item"> {{ Booking.creator_details.creator_type }} </li>
+                <li class="list-group-item"> {{ Booking.creator_details.team_member_id }} </li>
+
+                <li class="list-group-item"> {{ Booking.customer_id }} </li>
+                <li class="list-group-item"> {{ Booking.customer_note }} </li>
+                <li class="list-group-item"> {{ Booking.id }} </li>
+                <li class="list-group-item"> {{ Booking.location_id }} </li>
+                <li class="list-group-item"> {{ Booking.location_type }} </li>
+                <li class="list-group-item"> {{ Booking.seller_note }} </li>
+                <li class="list-group-item"> {{ Booking.source }} </li>
+                <li class="list-group-item">Starts At:  {{ Booking.start_at }} </li>,
+                <li class="list-group-item"> {{ Booking.status }} </li>
+                <li class="list-group-item"> {{ Booking.transition_time_minutes }} </li>,
+                <li class="list-group-item"> {{ Booking.updated_at }} </li>
+                <li class="list-group-item"> {{ Booking.version }} </li>
+
+
+            </ul>
+        </mat-card-content>
+    </mat-card>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" class="text-white" [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon class="material-symbols-outlined">exit_to_app</mat-icon>
+        Exit
+    </button>
+</mat-dialog-actions>

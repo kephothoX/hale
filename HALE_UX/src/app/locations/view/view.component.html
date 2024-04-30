@@ -1,0 +1,184 @@
+<section class="container-fluid">
+  <mat-card class="mat-elevation-z6 card m-2" *ngIf="Location">
+    <mat-card-header>
+      <h2 class="fs-3 align-center">{{Location.name }}</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-body">
+        <p class="card-text article">{{ Location.description }}</p>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions class="align-buttons-center mat-elevation-z6">
+      <mat-list>
+        <mat-list-item> {{ Location.address.address_line_1 }} | {{ Location.address.locality }} | {{
+          Location.address.administrative_district_level_1 }} </mat-list-item>
+        <mat-list-item>
+          <h5>{{ Location.type }}</h5>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+          <mat-menu #social="matMenu">
+            <a *ngIf="Location.facebook_url" href="{{ Location.facebook_url }}" class="p-3">
+              <button mat-button color="primary">
+                <mat-icon class="material-icons">star</mat-icon>
+                Facebook
+              </button>
+            </a>
+            <mat-divider></mat-divider>
+
+            <a href="{{ Location.twitter_username }}" class="p-3">
+              <button mat-button color="primary">
+                <mat-icon class="material-icons">star</mat-icon>
+                Twitter
+              </button>
+            </a>
+            <mat-divider></mat-divider>
+
+            <a href="{{ Location.instagram_username }}" class="p-3">
+              <button mat-button color="primary">
+                <mat-icon class="material-icons">star</mat-icon>
+                Instagram
+              </button>
+            </a>
+            <mat-divider></mat-divider>
+
+            <a href="{{ Location.website_url }}" class="p-3">
+              <button mat-button color="primary">
+                <mat-icon class="material-icons">star</mat-icon>
+                Website
+              </button>
+            </a>
+          </mat-menu>
+          <small>
+            <button *ngIf="Location.coordinates" mat-icon-button color="primary"
+              (click)="findMe(Location.coordinates.latitude, Location.coordinates.longitude)">
+              <mat-icon class="material-icons">pin_drop</mat-icon>
+            </button>
+
+
+            <button mat-icon-button color="primary" [matMenuTriggerFor]="social">
+              <mat-icon class="material-icons">share</mat-icon>
+            </button>
+            <a href="tel:{{ Location.phone_number }}">
+              <button color="accent" mat-icon-button>
+                <mat-icon class="material-icons">phone</mat-icon>
+              </button>
+            </a>
+
+            <a href="mailto:{{ Location.business_email }}">
+              <button color="accent" mat-icon-button>
+                <mat-icon class="material-icons">email</mat-icon>
+              </button>
+            </a>
+          </small>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-actions>
+    <mat-card-footer>
+      <a routerLink="/locations/appointments/{{ Location.id }}">
+        <button mat-raised-button color="accent" class="text-white">
+          <mat-icon class="material-symbols-outlined">verified</mat-icon>
+          My Appointments
+        </button>
+      </a>
+
+      <a routerLink="/locations/checkout/{{ Location.id }}">
+        <button mat-raised-button color="accent" class="text-white">
+          <mat-icon class="material-symbols-outlined">paid</mat-icon>
+          My Payments
+        </button>
+      </a>
+
+      <a routerLink="/locations/team/{{ Location.id }}">
+        <button mat-raised-button color="accent" class="text-white">
+          <mat-icon class="material-symbols-outlined">groups</mat-icon>
+          Our Team
+        </button>
+      </a>
+
+      <button mat-raised-button color="accent" class="text-white"
+        (click)="findMe(Location.coordinates.latitude, Location.coordinates.longitude)" *ngIf="Location.coordinates">
+        <mat-icon class="material-symbols-outlined">open</mat-icon>
+        Open on Map
+      </button>
+    </mat-card-footer>
+  </mat-card>
+
+  <mat-card *ngIf="!Location">
+    <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+    <h2>Loading Location.....</h2>
+  </mat-card>
+
+
+  <button mat-raised-button color="warn" (click)="btnClose()" class="btn-close text-white" cdkDrag
+    [style.visibility]="btnClosevisibility" color="primary">
+    <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+    Close Map
+  </button>
+
+  <mat-card id="map" [style.visibility]="visibility" class="mat-elevation-z6" cdkDrag>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+
+  <mat-card class="card">
+    <mat-card-title>
+      <h2>Services Offered</h2>
+    </mat-card-title>
+    <mat-card-content *ngIf="Services">
+      <div class="table-responsive">
+        <mat-table matSort cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)"
+          class="mat-elevation-z8 table" cdkDrag [dataSource]="Services">
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Service Name </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-warn">
+              <h3 class="fs-3"> {{ element.item_data.name }} </h3>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="service_name">
+            <mat-header-cell *matHeaderCellDef>Service Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.item_data.variations[0].item_variation_data.name
+              }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-raised-button color="accent" class="text-white"
+                (click)="newBookingDialog(element.item_data.variations[0].id, location_id)">
+                <mat-icon class="material-symbols-outlined">booking_online</mat-icon>
+                Book Appointment
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
+          <mat-row (click)="clickedRows.add(row)" [class.table-row-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+        </mat-table>
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer>
+      <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="pageLength" [pageSize]="pageSize"
+        showFirstLastButtons aria-label="Select Products"></mat-paginator>
+    </mat-card-footer>
+
+  </mat-card>
+
+
+
+  <mat-card *ngIf="!Services">
+    <mat-card-title>
+      <h2>No Services Found....</h2>
+    </mat-card-title>
+  </mat-card>
+
+
+</section>

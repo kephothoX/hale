@@ -1,0 +1,81 @@
+<section class="container-fluid">
+    <mat-card class="card">
+        <mat-card-content>
+
+            <mat-stepper orientation="vertical" linear="true" #stepper>
+                <mat-step [stepControl]="setLocationForm">
+                    <form [formGroup]="setLocationForm" (ngSubmit)="ngOnSubmit()"
+                        class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12"
+                        enctype="application/x-www-form-url-encoded">
+                        <ng-template matStepLabel>Select Location</ng-template>
+                        <h5>Locations Available</h5>
+                        <mat-form-field appearance="fill" class="p-1 form-control">
+                            <mat-label>Available Locations</mat-label>
+                            <mat-hint align="end">Locations Available</mat-hint>
+                            <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                            <mat-select formControlName="location">
+                                <mat-option *ngFor="let entry of Locations" [value]="entry.id">
+                                    {{ entry.business_name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="spacer"></div>
+                        <mat-card-actions class="align-buttone-center mat-elevation-z4">
+                            <button mat-raised-button color="accent" class="text-white" matStepperNext type="submit"
+                                [disabled]="!setLocationForm.valid">
+                                <mat-icon class="material-symbols-outlined">keyboard_double_arrow_right</mat-icon>
+                                Next
+                            </button>
+                        </mat-card-actions>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <mat-icon class="material-symbols-outlined">monetization_on</mat-icon>
+                        Make Payment
+                    </ng-template>
+                    <p>Complete Payment</p>
+                    <mat-card-footer>
+                        <mat-form-field appearance="fill" class="p-1 form-control">
+                            <mat-label>Amount</mat-label>
+                            <mat-icon matPrefix class="material-symbols-outlined">attach_money</mat-icon>
+                            <input type="number" matInput placeholder="10" (change)="setAmount($event)" />
+                        </mat-form-field>
+
+                        <mat-divider></mat-divider>
+
+                        <app-google-pay></app-google-pay>
+
+                        <mat-divider></mat-divider>
+
+                        <app-card-pay></app-card-pay>
+
+                        <mat-divider></mat-divider>
+
+                        <app-ach-pay></app-ach-pay>
+
+                        <mat-divider></mat-divider>
+
+                        <mat-divider></mat-divider>
+
+                    </mat-card-footer>
+                    <mat-card-actions class="align-buttone-center mat-elevation-z4">
+                        <button mat-raised-button color="accent" class="text-white" matStepperPrevious>
+                            <mat-icon class="material-symbols-outlined">keyboard_double_arrow_left</mat-icon>
+                            Back
+                        </button>
+                        <button mat-button color="warn" class="text-white" (click)="stepper.reset()">
+                            <mat-icon class="material-symbols-outlined">reset</mat-icon>
+                            Reset
+                        </button>
+                    </mat-card-actions>
+                </mat-step>
+            </mat-stepper>
+        </mat-card-content>
+        <mat-card-footer>
+
+            <div id="payment-status-container"></div>
+        </mat-card-footer>
+    </mat-card>
+
+</section>

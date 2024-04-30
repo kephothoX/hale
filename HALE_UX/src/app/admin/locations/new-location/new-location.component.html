@@ -1,0 +1,304 @@
+<div class="container">
+  <section class="container-fluid">
+
+    <mat-card class="card">
+      <mat-card-content>
+        <form  class="form col-lg-6 col-md-10 col-sm-12"  [formGroup]="newLocationForm">
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Name </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="name" placeholder="Location Name">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Business Name</mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="business_name" placeholder="Business Name">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Description </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="description" placeholder="Location Description">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Business Email </mat-label>
+            <mat-hint align="end"></mat-hint>
+            <input type="email" matInput email="true" formControlName="business_email"
+              placeholder="Business Email Address">
+            <mat-icon matPrefix class="material-symbols-outlined">mail_outline</mat-icon>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>First Name </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="first_name" placeholder="First Name">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Last Name </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="last_name" placeholder="Last Name">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Country</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-select formControlName="country">
+              <mat-option *ngFor="let entry of Countries" [value]="entry.Country_Code_1"
+                (click)="getCountryPrefix(entry.Phone_Prefix)">
+                {{ entry.Country_Name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Phone Number </mat-label>
+            <mat-hint align="end"></mat-hint>
+            <span matPrefix>{{ Phone_Prefix }} </span>
+            <input type="tel" matInput tel="true" formControlName="phone_number" placeholder="Phone Number">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Address Line 1 </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="address_line_1" placeholder="Address Line 1">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Address Line 2 </mat-label>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="address_line_2" placeholder="Address Line 2">
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Locality</mat-label>
+            <mat-hint align="end"></mat-hint><mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <input type="text" matInput formControlName="locality" placeholder="Locality">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Administrative District Level 1</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <input type="text" matInput formControlName="administrative_district_level_1"
+              placeholder="Administrative District Level 1">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Sublocality </mat-label>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-hint align="end"></mat-hint>
+            <input type="text" matInput formControlName="sublocality" placeholder="Sublocality">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Postal Code</mat-label>
+            <mat-hint align="end"></mat-hint><mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <input type="text" matInput formControlName="postal_code" placeholder="Postal Code">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Twitter Username</mat-label>
+            <mat-hint align="end">Twitter/X username without "&#64;" </mat-hint>
+            <input type="text" matInput formControlName="twitter_username" placeholder="Twitter Username"
+              placeholder="">
+            <mat-icon matPrefix class="material-symbols-outlined">twitter_outline</mat-icon>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Instagram Username</mat-label>
+            <mat-hint align="end">Name of Instagram Account</mat-hint><mat-icon matPrefix
+              class="material-symbols-outlined">instagram_outline</mat-icon>
+            <input type="text" matInput formControlName="instagram_username" placeholder="thrive">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Facebook URL</mat-label>
+            <mat-hint align="end">Fomat with: https://www.facebok.com/name</mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">facebook_outline</mat-icon>
+            <input type="url" matInput formControlName="facebook_url" placeholder="https://www.facebok.com/thrive">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Website URL</mat-label>
+            <mat-hint align="end">Website URL</mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">public</mat-icon>
+            <input type="url" matInput formControlName="website_url" placeholder="https://thrive.vercel.app">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Type Of Address</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-select formControlName="type">
+              <mat-option *ngFor="let adt of AddressType" [value]="adt">
+                {{ adt }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="spacer"></div>
+          <mat-divider></mat-divider>
+
+          <mat-card-title>
+            <h2>Business Hours</h2>
+          </mat-card-title>
+          <ng-container *ngFor="let count of scheduleCount">
+            <mat-divider></mat-divider>
+
+            <form [formGroup]="businessHours">
+            <mat-form-field appearance="fill" class="form-control p-1">
+              <mat-label>Day Of The Week</mat-label>
+              <mat-hint align="end"></mat-hint>
+              <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+              <mat-select formControlName="day_of_week">
+                <mat-option *ngFor="let day of daysOfTheWeek" [value]="day">
+                  {{ day }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="fill" class="form-control p-1">
+              <mat-label>Opening Hours</mat-label>
+              <mat-hint align="end">Format: 00:00:00</mat-hint><mat-icon matPrefix
+                class="material-symbols-outlined">time_outline</mat-icon>
+              <input type="text" matInput formControlName="start_local_time" placeholder="Format: 08:00:00" #OpeningHrs>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-form-field appearance="fill" class="form-control p-1">
+              <mat-label>Closing Hours</mat-label>
+              <mat-hint align="end">Format: 22:00:00</mat-hint><mat-icon matPrefix
+                class="material-symbols-outlined">time_outline</mat-icon>
+              <input type="text" matInput formControlName="end_local_time" placeholder="Format: 21:00:00" #ClosingHrs>
+            </mat-form-field>
+            <div class="spacer"></div>
+            </form>           
+            
+          </ng-container>
+          <button mat-raised-button color="accent" (click)="addSchedule()" [disabled]="!businessHours.valid">
+                <mat-icon class="material-symbols-outlined">add_circle</mat-icon>
+                Add New Schedule
+            </button>
+
+            <button mat-raised-button color="warn" (click)="clearSchedule()" [disabled]="!businessHours.valid">
+                <mat-icon class="material-symbols-outlined">clear</mat-icon>
+                Delete Schedule
+            </button>
+            <div class="spacer"></div>
+
+          <mat-card id="map" [style.visibility]="visibility" class="mat-elevation-z6" cdkDrag >
+            <button mat-icon-button color="warn" (click)="btnClose()" class="btn-close" style="z-index: 9999">
+              <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+            </button>
+          </mat-card>
+
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Latitude</mat-label>
+            <mat-hint align="end"></mat-hint><mat-icon matPrefix class="material-symbols-outlined">time_outline</mat-icon>
+            <input type="text" matInput formControlName="latitude" [(ngModel)]="latitude">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Longitude</mat-label>
+            <mat-hint align="end"></mat-hint><mat-icon matPrefix class="material-symbols-outlined">time_outline</mat-icon>
+            <input type="text" matInput formControlName="longitude" [(ngModel)]="longitude">
+          </mat-form-field>
+          <div class="spacer"></div>
+
+          <button mat-raised-button color="primary" class="text-white" (click)="getCoordinates()" cdkOverlayOrigin
+            #trigger="cdkOverlayOrigin">
+            <mat-icon class="material-symbols-outlined">location_searching</mat-icon>
+            SetCoordinates
+
+          </button>
+          <div clas="spacer"></div>
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Timezone</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-select formControlName="timezone">
+              <mat-option *ngFor="let entry of Timezones" [value]="entry.id">
+                {{ entry.id }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+         <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>MCC Code</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-select formControlName="mcc">
+              <mat-option *ngFor="let entry of MCC_Codes " [value]="entry.Code">
+                {{ entry.Description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="spacer"></div>
+
+
+          <mat-form-field appearance="fill" class="form-control p-1">
+            <mat-label>Language Code</mat-label>
+            <mat-hint align="end"></mat-hint>
+            <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+            <mat-select formControlName="language_code">
+              <mat-option *ngFor="let entry of Lang_Codes " [value]="entry.Value">
+                {{ entry.Name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="spacer"></div>
+        </form>
+      </mat-card-content>
+
+      <mat-card-actions class="align-buttons-center">
+        <button type="submit" color="primary" class="text-white" mat-raised-button [disabled]="!newLocationForm.valid" (click)="onSubmit()">
+          <mat-icon class="material-symbols-outlined">add_circle</mat-icon>
+          Add New Location
+        </button>
+
+        <button type="reset" mat-raised-button color="warn" class="text-white" (click)="resetForm()">
+          <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+          Clear
+        </button>
+
+      </mat-card-actions>
+
+    </mat-card>
+  </section>
+</div>

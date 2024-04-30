@@ -1,0 +1,194 @@
+<mat-toolbar class="mat-elevation-z8 bg-whiter d-flex">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="bg-whiter text-primary flex-start position-absolute start-0" id="apps">
+    <mat-icon class="material-symbols-outlined">apps</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="mat-elevation-z8 container">
+    <a routerLink="/home">
+      <button mat-menu-item>
+        <mat-icon class="material-symbols-outlined">home</mat-icon>
+        <h3 class="text-primary">HALE Health Service</h3>
+      </button>
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [matMenuTriggerFor]="accounts">
+      <mat-icon class="material-symbols-outlined">settings_suggest</mat-icon>
+      Manage Account
+    </button>
+
+    <mat-menu #accounts="matMenu">
+      <a routerLink="/auth/signup" *ngIf="!accountEmail">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">account_circle</mat-icon>
+          Register
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/auth/signin" *ngIf="!accountEmail">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">lock_open</mat-icon>
+          Login
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item *ngIf="accountEmail" (click)="isMyEmailCompromised()">
+        <mat-icon class="material-symbols-outlined">security</mat-icon>
+        Is My Email Compromised?
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="logOutUser()" *ngIf="accountEmail">
+        <mat-icon class="material-symbols-outlined">lock</mat-icon>
+        Logout
+      </button>
+
+    </mat-menu>
+
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [matMenuTriggerFor]="billing">
+      <mat-icon class="material-symbols-outlined">credit_card</mat-icon>
+      Manage Billing
+    </button>
+
+    <mat-menu #billing="matMenu">
+      <a routerLink="/billing/cards">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">account_balance_wallet</mat-icon>
+          My Cards
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/billing/new-card">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">credit_card</mat-icon>
+          New Card
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+    </mat-menu>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [matMenuTriggerFor]="subscriptions">
+      <mat-icon class="material-symbols-outlined">collections_bookmark</mat-icon>
+      Manage Subscriptions
+    </button>
+
+    <mat-menu #subscriptions="matMenu">
+      <a routerLink="/subscriptions/my-invoices">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">check_box</mat-icon>
+          My Subscriptions
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/subscriptions/pause-subscription">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">pause_circle</mat-icon>
+          Pause Subscription
+        </button>
+      </a>
+
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/subscriptions/cancel-subscription">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">stop_circle</mat-icon>
+          Cancel Subscription
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/subscriptions/resume-subscription">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">replay</mat-icon>
+          Resume Subscription
+        </button>
+      </a>
+
+    </mat-menu>
+
+    <mat-divider></mat-divider>
+
+    <button mat-menu-item [matMenuTriggerFor]="FileVault">
+      <mat-icon class="material-symbols-outlined">enhanced_encryption</mat-icon>
+      Manage Files
+    </button>
+
+    <mat-menu #FileVault="matMenu">
+      <a routerLink="/vault/upload">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">upload</mat-icon>
+          Upload File
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/vault/files">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">folder</mat-icon>
+          My Files
+        </button>
+      </a>
+
+
+      <mat-divider></mat-divider>
+
+      <a routerLink="/vault/file-sharing">
+        <button mat-menu-item>
+          <mat-icon class="material-symbols-outlined">share</mat-icon>
+          Share Files
+        </button>
+      </a>
+
+      <mat-divider></mat-divider>
+
+
+
+    </mat-menu>
+
+    <mat-divider></mat-divider>
+
+    <h4 class="pr-3" *ngIf="accountEmail">Logged in as: <span class="text-warn">{{ accountEmail }}</span></h4>
+    <h4 class="pr-3" *ngIf="!accountEmail">Not Logged in. <a routerLink="/auth/signin">Login to Continue</a></h4>
+
+    <mat-divider></mat-divider>
+
+  </mat-menu>
+
+
+  <div class="flex-end position-absolute end-0">
+
+    <a routerLink="/locations">
+      <button mat-raised-button color="primary" class="text-white">
+        <mat-icon class="material-symbols-outlined">medical_services</mat-icon>
+        Our Partners
+      </button>
+    </a>
+
+   <a routerLink="/admin">
+      <button mat-raised-button color="warn" class="text-white">
+        <mat-icon class="material-symbols-outlined">supervisor_account</mat-icon>
+        partner Login
+      </button>
+    </a>
+  </div>
+
+
+</mat-toolbar>

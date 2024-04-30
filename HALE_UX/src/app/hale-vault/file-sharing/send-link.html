@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Share File</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card class="card mat-elevation-z6">
+        <mat-card-content>
+            <form [formGroup]="sendLinkForm" (ngSubmit)="ngSendLink()">
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                    <mat-label>Receiver Email</mat-label>
+                    <mat-hint align="end">Title of shared file</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outline">info</mat-icon>
+                    <input type="email" email="true" matInput formControlName="email" placeholder="File Title" />
+                </mat-form-field>
+                <div class="spacer"></div>
+
+                
+
+                <mat-card-actions class="align-buttons-center">
+                    <button type="submit" color="primary" class="text-white" mat-raised-button
+                        [disabled]="!sendLinkForm.valid">
+                        <mat-icon class="material-symbols-outlined">send</mat-icon>
+                        Send Sharable Link
+                    </button>
+
+                    <button type="reset" mat-raised-button color="warn" class="text-white">
+                        <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+                        Clear
+                    </button>
+
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" class="text-white" [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon class="material-symbols-outlined">exit_to_app</mat-icon>
+        Exit
+    </button>
+</mat-dialog-actions>

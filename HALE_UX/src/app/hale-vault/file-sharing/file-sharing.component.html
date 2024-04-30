@@ -1,0 +1,99 @@
+<mat-card class="card">
+    
+    <mat-card-content *ngIf="Shared">
+        <div class="table-responsive">
+            <button mat-raised-button color="accent" (click)="shareManyDialog()">
+                <mat-icon class="material-symbols-outlined">share</mat-icon>
+                Share Checked Links
+            </button>
+
+             <button mat-raised-button color="warn" (click)="delManyDialog()">
+                <mat-icon class="material-symbols-outlined">delete</mat-icon>
+                Delete Checked Links
+            </button>
+            <mat-table matSort cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)"
+                class="mat-elevation-z8 table" cdkDrag [dataSource]="Shared">
+
+                <ng-container matColumnDef="select">
+                    <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                    <mat-cell *matCellDef="let element" class="text-warn">
+                        <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel()"
+                            (change)="getShareIds(element.id)"
+                            (change)="addSharableLinks(element.link)">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>Title </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+
+                        {{ element.title }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="access_count">
+                    <mat-header-cell *matHeaderCellDef>Access Count</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.access_count }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="expires_at">
+                    <mat-header-cell *matHeaderCellDef>Expires At </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.expires_at | date }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="link_type">
+                    <mat-header-cell *matHeaderCellDef>Link Type</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{ element.link_type }} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="link">
+                    <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-primary">
+                        <a href="{{ element.link }}">
+                            <button mat-icon-button color="accent"> <!-- (click)="openFileDialog(element.id)"> -->
+                                <mat-icon class="material-symbols-outlined">open_in_browser</mat-icon>
+                            </button>
+                        </a>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let element" class="text-primary">
+                        <button mat-icon-button color="accent" (click)="viewFileDialog(element.targets[0])">
+                            <mat-icon class="material-symbols-outlined">download</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
+                <mat-row (click)="clickedRows.add(row)" [class.table-row-clicked]="clickedRows.has(row)"
+                    *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+            </mat-table>
+        </div>
+    </mat-card-content>
+
+    <mat-card-footer>
+        <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="pageLength" [pageSize]="pageSize"
+            showFirstLastButtons aria-label="Select Products"></mat-paginator>
+    </mat-card-footer>
+
+</mat-card>
+
+
+
+
+
+<mat-card *ngIf="!Shared">
+    <mat-card-title>
+        <h2>You Have No Shared.</h2>
+    </mat-card-title>
+</mat-card>

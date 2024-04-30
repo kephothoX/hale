@@ -1,0 +1,209 @@
+{
+    "MCC_Codes": [
+        {
+            "Code":  "1742",
+            "Description": "Veterinary"
+        },
+        {
+            "Code":  "1520",
+            "Description": "Trade Contractor"
+        },
+        {
+            "Code":  "4121",
+            "Description": "Taxi/Limo"
+        },
+        {
+            "Code":  "4722",
+            "Description": "Tourism"
+        },
+        {
+            "Code":  "5192",
+            "Description": "Books, Periodicals, and Newspapers"
+        },
+        {
+            "Code":  "5331",
+            "Description": "Variety Stores"
+        },
+        {
+            "Code":  "5399",
+            "Description": "Misc. General Merchandise"
+        },
+        {
+            "Code":  "5411",
+            "Description": "Grocery / Market"
+        },
+        {
+            "Code":  "5499",
+            "Description": "Food / Grocery"
+        },
+        {
+            "Code":  "5552",
+            "Description": "Electric Vehicle Charging"
+        },
+        {
+            "Code":  "5611",
+            "Description": "Men's Apparel"
+        },
+        {
+            "Code":  "5699",
+            "Description": "Apparel"
+        },
+        {
+            "Code":  "5712",
+            "Description": "Furniture / Home Goods"
+        },
+        {
+            "Code":  "5811",
+            "Description": "Caterers"
+        },
+        {
+            "Code":  "5812",
+            "Description": "Restaurant/Bar"
+        },
+        {
+            "Code":  "5813",
+            "Description": "Bar / Club / Lounge"
+        },
+        {
+            "Code":  "5814",
+            "Description": "Food Truck / Cart"
+        },
+        {
+            "Code":  "5944",
+            "Description": "Jewelry and Watches"
+        },
+        {
+            "Code":  "5944",
+            "Description": "Other (Japan only)"
+        },
+        {
+            "Code":  "5971",
+            "Description": "Art Dealer"
+        },
+        {
+            "Code":  "5993",
+            "Description": "Tobacco"
+        },
+        {
+            "Code":  "5999",
+            "Description": "Miscellaneous and Specialty Retail Shops"
+        },
+        {
+            "Code":  "6300",
+            "Description": "Insurance Sales, Underwriting, and Premiums"
+        },
+        {
+            "Code":  "6513",
+            "Description": "Real Estate"
+        },
+        {
+            "Code":  "7216",
+            "Description": "Dry Cleaning and Laundry"
+        },
+        {
+            "Code":  "7230",
+            "Description": "Beauty / Barber"
+        },
+        {
+            "Code":  "7273",
+            "Description": "Dating and Escort Services"
+        },
+        {
+            "Code":  "7278",
+            "Description": "Outdoor Markets"
+        },
+        {
+            "Code":  "7298",
+            "Description": "Health and Beauty Spas"
+        },
+        {
+            "Code":  "7299",
+            "Description": "Personal Services"
+        },
+        {
+            "Code":  "7372",
+            "Description": "Web Dev/Design"
+        },
+        {
+            "Code":  "7361",
+            "Description": "Tutoring"
+        },
+        {
+            "Code":  "7392",
+            "Description": "Consultant"
+        },
+        {
+            "Code":  "7399",
+            "Description": "Business Services"
+        },
+        {
+            "Code":  "7699",
+            "Description": "Repair Services"
+        },
+        {
+            "Code":  "7922",
+            "Description": "Ticket Sales"
+        },
+        {
+            "Code":  "7997",
+            "Description": "Membership Clubs / Sports Facilities"
+        },
+        {
+            "Code":  "8011",
+            "Description": "Medical Practitioner"
+        },
+        {
+            "Code":  "8021",
+            "Description": "Dentistry"
+        },
+        {
+            "Code": "8062",
+            "Description": "Health Care Services"
+
+        },
+        {
+            "Code": "8092",
+            "Description": "Pharmaceuticals Services"
+        },
+        {
+            "Code":  "8082",
+            "Description": "Home Health Care Services"
+        },
+        {
+            "Code":  "8111",
+            "Description": "Legal Services"
+        },
+        {
+            "Code":  "8244",
+            "Description": "Education"
+        },
+        {
+            "Code":  "8299",
+            "Description": "School & Education"
+        },
+        {
+            "Code":  "8398",
+            "Description": "Charity / Social Services"
+        },
+        {
+            "Code":  "8651",
+            "Description": "Political Organizations"
+        },
+        {
+            "Code":  "8661",
+            "Description": "Religious Organizations"
+        },
+        {
+            "Code":  "8699",
+            "Description": "Membership Org"
+        },
+        {
+            "Code":  "8931",
+            "Description": "Accounting"
+        },
+        {
+            "Code":  "8999",
+            "Description": "Professional Services"
+        }
+    ]
+}

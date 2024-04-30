@@ -1,0 +1,106 @@
+<section class="container-fluid">
+  <mat-card class="card">
+    <mat-card-title>
+      <h3>New Vendor</h3>
+    </mat-card-title>
+    <mat-card-content>
+          <form [formGroup]="newVendorForm" class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12" enctype="application/x-www-form-url-encoded">       
+            <mat-form-field appearance="fill" class="p-1 form-control">
+              <mat-label>Note</mat-label>
+              <mat-icon matPrefix  class="material-symbols-outlined">info_outline</mat-icon>
+              <mat-hint align="end">Notes</mat-hint>
+              <textarea  matInput  formControlName ="note"></textarea>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+            <mat-accordion class="matAccordion">
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-card-title>
+                      <h2 class="centered">Address</h2>
+                    </mat-card-title>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+            
+            
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                  <mat-label>Address Line </mat-label>
+                  <mat-hint align="end"></mat-hint>
+                  <input type="text" matInput formControlName="address_line_1" placeholder="Address Line 1">
+                  <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                </mat-form-field>
+                <div class="spacer"></div>
+            
+            
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                  <mat-label>Locality</mat-label>
+                  <mat-hint align="end"></mat-hint>
+                  <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                  <input type="text" matInput formControlName="locality" placeholder="Locality">
+                </mat-form-field>
+                <div class="spacer"></div>
+            
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                  <mat-label>City</mat-label>
+                  <mat-hint align="end"></mat-hint>
+                  <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                  <input type="text" matInput formControlName="city"
+                    placeholder="City">
+                </mat-form-field>
+                <div class="spacer"></div>
+            
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                  <mat-label>Postal Code</mat-label>
+                  <mat-hint align="end"></mat-hint>
+                  <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                  <input type="text" matInput formControlName="postal_code" placeholder="Postal Code">
+                </mat-form-field>
+                <div class="spacer"></div>
+            
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                  <mat-label>Country</mat-label>
+                  <mat-hint align="end"></mat-hint>
+                  <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                  <mat-select formControlName="country">
+                    <mat-option *ngFor="let entry of Countries" [value]="entry.Country_Code_1"
+                      (click)="getCountryPrefix(entry.Phone_Prefix)">
+                      {{ entry.Country_Name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="spacer"></div>
+            
+              </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-form-field appearance="fill" class="p-1 form-control">
+              <mat-label>Phone Number </mat-label>
+              <mat-hint align="end"></mat-hint>
+              <span matPrefix>{{ Phone_Prefix }} </span>
+              <input type="tel" matInput tel="true" formControlName="phone_number" placeholder="Phone Number">
+            </mat-form-field>
+            <div class="spacer"></div>
+
+          </form>
+
+          <mat-card-actions class="align-buttons-center">
+            <button mat-raised-button color="primary" class="text-white" (click)="ngOnSubmitVendor()" [disabled]="!newVendorForm.valid">
+              <mat-icon class="material-symbols-outlined">person_add</mat-icon>
+              Submit
+            </button>
+
+            <button mat-raised-button color="warn" class="text-white" (click)="resetForm()">
+              <mat-icon class="material-symbols-outlined">clear</mat-icon>
+              Clear
+            </button>
+          </mat-card-actions>
+       
+    </mat-card-content>
+
+  </mat-card>
+
+</section>
+
+
+

@@ -1,0 +1,97 @@
+<h2 mat-dialog-title>View File</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card *ngIf="File">
+        <img [src]="FileURL" mat-card-lg-image alt="HALE Health Servicea" class="img-fluid object-fit-fill rounded mx-auto d-block"/>
+
+        <a href="{{ File.dest_url }}">
+            <button mat-raised-button color="primary" class="text-white">
+                <mat-icon class="material-symbols-outlined">download</mat-icon>
+                Download
+            </button>
+        </a>
+        <mat-card-footer>
+
+            <h6 class="fs-6 align-left">Created At:  <span class="text-primary">{{ File.object.created_at | date }}</span> </h6>
+            <h6 class="fs-6 align-left">Folder:  <span class="text-primary">{{ File.object.folder }}</span> </h6>
+            <h6 class="fs-6 align-left">ID: <span class="text-primary">{{ File.object.id }}</span> </h6>
+
+            <h6 class="fs-6 align-left">Created By:  <span class="text-primary">{{ File.object.metadata.created_by  }}</span> </h6>
+     
+            <h6 class="fs-6 align-left">Format:  <span class="text-primary">{{ File.object.metadata_protected.format }}</span> </h6>
+
+
+            <h6 class="fs-6 align-left">Name:  <span class="text-primary">{{ File.object.name }}</span> </h6>
+
+            <h6 class="fs-6 align-left">Size:  <span class="text-primary">{{ File.object.size }}</span> </h6>
+            <h6 class="fs-6 align-left">Type <span class="text-primary">{{ File.object.type }}</span> </h6>
+            <h6 class="fs-6 align-left">Updated At:  <span class="text-primary">{{ File.object.updated_at | date }}</span> </h6>
+
+
+        </mat-card-footer>
+
+        <mat-card-actions>
+            <form [formGroup]="shareFileForm" (ngSubmit)="ngShareFileSubmit()">
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                    <mat-label>Email Address</mat-label>
+                    <mat-hint align="end">Email address for the person you wish to share with</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outline">info</mat-icon>
+                    <input type="email" email="true" matInput formControlName="email_address" placeholder="Email Address" />
+                </mat-form-field>
+
+                <div class="spacer"></div>
+
+                <mat-card-actions class="align-buttons-center">
+                    <button type="submit" color="primary" class="text-white" mat-raised-button
+                        [disabled]="!shareFileForm.valid">
+                        <mat-icon class="material-symbols-outlined">send</mat-icon>
+                        Share File
+                    </button>
+
+                    <button type="reset" mat-raised-button color="warn" class="text-white" (click)="resetShareFileForm()">
+                        <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+                        Clear
+                    </button>
+
+                </mat-card-actions>
+
+            </form>
+        </mat-card-actions>
+
+    </mat-card>
+    <mat-card class="card mat-elevation-z6">
+        <mat-card-content>
+            <form [formGroup]="filePasswordForm" (ngSubmit)="ngOnSubmit()">
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                    <mat-label>Password</mat-label>
+                    <mat-hint align="end">password to open file</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outline">info</mat-icon>
+                    <input type="password" matInput formControlName="password" />
+                </mat-form-field>
+
+                <div class="spacer"></div>
+
+                <mat-card-actions class="align-buttons-center">
+                    <button type="submit" color="primary" class="text-white" mat-raised-button
+                        [disabled]="!filePasswordForm.valid">
+                        <mat-icon class="material-symbols-outlined">send</mat-icon>
+                        Open File
+                    </button>
+
+                    <button type="reset" mat-raised-button color="warn" class="text-white" (click)="resetForm()">
+                        <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+                        Clear
+                    </button>
+
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" class="text-white" [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon class="material-symbols-outlined">exit_to_app</mat-icon>
+        Exit
+    </button>
+</mat-dialog-actions>

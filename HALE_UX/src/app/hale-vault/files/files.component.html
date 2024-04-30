@@ -1,0 +1,93 @@
+<section class="container-fluid">
+  <mat-card class="card">
+    <mat-card-title>My Files</mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="filesFilterForm" class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12"
+        enctype="application/x-www-form-urlencoded">
+        <mat-form-field appearance="fill" class="p-1 form-control">
+          <mat-label>Created At</mat-label>
+          <mat-icon matPrefix class="material-symbols-outlined">calendar_month</mat-icon>
+
+          <input type="datetime-local" matInput formControlName="created_at" />
+        </mat-form-field>
+      </form>
+
+      <button mat-raised-button type="submit" color="accent" class="text-white" (click)="ngOnSubmit()">
+        <mat-icon class="material-symbols-outlined">filter</mat-icon>
+        Find
+      </button>
+      <button mat-raised-button type="reset" color="warn" class="text-white" (click)="resetForm()">
+        <mat-icon class="material-symbols-outlined">clear</mat-icon>
+        Clear
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+
+  <mat-card class="card">
+    <mat-card-content *ngIf="Files">
+      <div class="table-responsive">
+        <mat-table matSort cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)"
+          class="mat-elevation-z8 table" cdkDrag [dataSource]="Files">
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>File Name </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-warn"> {{ element.name }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="folder">
+            <mat-header-cell *matHeaderCellDef>Folder</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.folder }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef>Created At </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.created_at | date }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="updated_at">
+            <mat-header-cell *matHeaderCellDef>Updated At </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.updated_at | date }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-primary">
+
+              <button mat-icon-button color="accent" (click)="openFileDialog(element.id)">
+                <mat-icon class="material-symbols-outlined">open_in_browser</mat-icon>
+              </button>
+
+              <button mat-icon-button color="accent" (click)="openShareFileDialog(element.id)">
+                <mat-icon class="material-symbols-outlined">share</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
+          <mat-row (click)="clickedRows.add(row)" [class.table-row-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+        </mat-table>
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer>
+      <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="pageLength" [pageSize]="pageSize"
+        showFirstLastButtons aria-label="Select Products"></mat-paginator>
+    </mat-card-footer>
+
+  </mat-card>
+
+
+
+
+
+  <mat-card *ngIf="!Files">
+    <mat-card-title>
+      <h2>You Have No Files.</h2>
+    </mat-card-title>
+  </mat-card>
+</section>

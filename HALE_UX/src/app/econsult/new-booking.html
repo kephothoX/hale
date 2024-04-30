@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>New Appointment</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card class="card mat-elevation-z6">
+        <mat-card-content>
+            <form [formGroup]="newBookingForm" (ngSubmit)="ngOnSubmitBooking()">
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                    <mat-label>Note</mat-label>
+                    <mat-hint align="end">Note to the attendant</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outline">info</mat-icon>
+                    <textarea matInput formControlName="customer_note"></textarea>
+                </mat-form-field>
+
+                <div class="spacer"></div>
+
+                <mat-form-field appearance="fill" class="form-control p-1">
+                    <mat-label>Appointment Place</mat-label>
+                    <mat-hint align="end">Where appointment will take place</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                    <mat-select formControlName="location_type">
+                        <mat-option *ngFor="let entry of LocationType" [value]="entry">
+                            {{ entry }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="spacer"></div>
+
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                    <mat-label>Appointment Time</mat-label>
+                    <mat-hint align="end">Time the appointment starts</mat-hint>
+                    <mat-icon matPrefix class="material-symbols-outline">time</mat-icon>
+                    <input type="datetime-local" matInput formControlName="start_at"/>
+                </mat-form-field>
+                <div class="spacer"></div>
+
+                <mat-form-field appearance="fill" class="p-1 form-control">
+                <mat-label>Attendant</mat-label>
+                <mat-hint align="end">Locations Assigned. Select many</mat-hint>
+                <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                <mat-select formControlName="team_member_id" multiple>
+                    <mat-option *ngFor="let entry of TeamMembers" [value]="entry.id">
+                        {{ entry.given_name }} {{ entry.family_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="spacer"></div>
+
+
+                <mat-card-actions class="align-buttons-center">
+                    <button type="submit" color="primary" class="text-white" mat-raised-button
+                        [disabled]="!newBookingForm.valid">
+                        <mat-icon class="material-symbols-outlined">send</mat-icon>
+                        Submit Booking
+                    </button>
+
+                    <button type="reset" mat-raised-button color="warn" class="text-white" (click)="resetForm()">
+                        <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+                        Clear
+                    </button>
+
+                    <a routerLink="/vault/file-sharing">
+                        <button mat-raised-button  color="accent" class="text-white">
+                            <mat-icon class="material-symbols-outlined">share</mat-icon>
+                            Share Files Securely
+                        </button>
+                    </a>
+
+                </mat-card-actions>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" class="text-white" [mat-dialog-close]="true" cdkFocusInitial>
+        <mat-icon class="material-symbols-outlined">exit_to_app</mat-icon>
+        Exit
+    </button>
+</mat-dialog-actions>

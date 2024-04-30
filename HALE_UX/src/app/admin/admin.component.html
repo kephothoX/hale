@@ -1,0 +1,153 @@
+<section>
+    <mat-card>
+        <mat-stepper orientation="vertical" linear="true" #stepper>
+            <mat-step [stepControl]="setLocationForm">
+                <form [formGroup]="setLocationForm" (ngSubmit)="ngOnSubmit()"
+                    class="mat-elevation-z4 centered form col-lg-6 col-md-10 col-sm-12"
+                    enctype="application/x-www-form-url-encoded">
+                    <ng-template matStepLabel>Select Location</ng-template>
+                    <h5>Locations Available</h5>
+                    <mat-form-field appearance="fill" class="p-1 form-control">
+                        <mat-label>Available Locations</mat-label>
+                        <mat-hint align="end">Locations Available</mat-hint>
+                        <mat-icon matPrefix class="material-symbols-outlined">info_outline</mat-icon>
+                        <mat-select formControlName="location">
+                            <mat-option *ngFor="let entry of Locations" [value]="entry.id">
+                                {{ entry.business_name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="spacer"></div>
+                    <mat-card-actions class="align-buttons-center mat-elevation-z4">
+                        <button mat-raised-button color="accent" class="text-white" matStepperNext type="submit" [disabled]="!setLocationForm.valid">
+                            <mat-icon class="material-symbols-outlined">keyboard_double_arrow_right</mat-icon>
+                            Next
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>
+                    <mat-icon class="material-symbols-outlined">done</mat-icon>
+                    Done
+                </ng-template>
+                <p>Navigate.</p>
+                <mat-card-footer>
+                    <ul class="nav nav-pills flex-column nav-fill">
+                        <li class="nav-item">
+                            <a class="mat-button active" aria-current="page" routerLink="payments">
+                                <button mat-raised-button color="primary" class="text-white">
+                                    <mat-icon class="material-symbols-outlined">attach_money</mat-icon>
+                                    Request Payment
+                                </button>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false">Subscriptions</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="subsriptions/new">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Add New Subscription Package
+                                        </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="subscriptions/list">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Subscription Packages
+                                        </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false">Locations</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="locations/new">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Add New Location
+                                        </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="subscriptions/list">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Locations
+                                        </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                         <li class="nav-item dropdown">
+                            <button color="primary" class="text-white" mat-stroked-button>
+                              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false">Bookings</a>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/admin/bookings/new">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Add New Appointment Service
+                                        </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/admin/bookings">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Bookings
+                                        </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false">Catalog</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="catalog/new">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Add New Catalog
+                                        </button>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="catalog">
+                                        <button mat-raised-button color="primary" class="text-white">
+                                            Catalog
+                                        </button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                </mat-card-footer>
+                <mat-card-actions class="align-buttone-center mat-elevation-z4">
+                    <button mat-raised-button color="accent" class="text-white" matStepperPrevious>
+                        <mat-icon class="material-symbols-outlined">keyboard_double_arrow_left</mat-icon>
+                        Back
+                    </button>
+                    <button mat-button color="warn" class="text-white" (click)="stepper.reset()">
+                        <mat-icon class="material-symbols-outlined">reset</mat-icon>
+                        Reset
+                    </button>
+                </mat-card-actions>
+            </mat-step>
+        </mat-stepper>
+
+    </mat-card>
+</section>

@@ -1,0 +1,40 @@
+{
+  "/api/*": {
+    "target": "https://fortunate-jaguar-859.convex.site",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "v2": {
+    "target": "https://pci-connect.squareupsandbox.com/payments/mtx/",
+    "secure": false
+  },
+  "/api/Square_API/*": {
+    "target": "https://fortunate-jaguar-859.convex.site",
+    "secure": false
+  },
+  "/us-central1/*": {
+    "target": "https://fortunate-jaguar-859.convex.site",
+    "secure": false
+  },
+  "/payment": {
+    "target": "https://fortunate-jaguar-859.convex.site",
+    "secure": false
+  },
+  "/v2/analytics/token/*": {
+    "target": "https://connect.squareupsandbox.com",
+    "secure": false
+  },
+  "/2.2/*": {
+    "target": "https://nd.squarecdn.com",
+    "secure": false
+  },
+  "token": {
+    "target": "https://connect.squareupsandbox.com/v2/analytics/",
+    "secure": false
+  },
+  "?sentry_key=565ee38bb5ff45dabc25ab6d7b8bebe3&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.52.1": {
+    "target": "https://o160250.ingest.sentry.io/api/3478832/envelope/",
+    "secure": false
+  }
+}

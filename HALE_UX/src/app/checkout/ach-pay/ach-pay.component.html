@@ -1,0 +1,30 @@
+<mat-card class="card">
+    <mat-card-title>
+        <h2>ACH</h2>
+    </mat-card-title>
+    <form id="payment-form">
+        <fieldset class="buyer-inputs">
+            <mat-form-field appearance="fill" class="p-1 form-control">
+                <mat-label>Given Name</mat-label>
+                <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                <input type="text" matInput autocomplete="given-name" aria-required="true" aria-label="First Name"
+                    required="required" placeholder="Given Name" name="givenName" spellcheck="false" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="p-1 form-control">
+                <mat-label>Family Name</mat-label>
+                <mat-icon matPrefix class="material-symbols-outlined">info</mat-icon>
+                <input type="text" matInput autocomplete="family-name" aria-required="true" aria-label="Last Name"
+                    required="required" placeholder="Family Name" name="familyName" spellcheck="false" />
+            </mat-form-field>
+
+
+
+        </fieldset>
+        <button id="ach-button" mat-raised-button color="primary" class="text-white">
+            <mat-icon class="material-symbols-outlined">attach_money</mat-icon>
+            Pay with Bank Account
+        </button>
+    </form>
+
+</mat-card>

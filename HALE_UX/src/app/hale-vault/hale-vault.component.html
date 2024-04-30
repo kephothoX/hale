@@ -1,0 +1,30 @@
+<section class="container-fluid">
+    <mat-card class="card">
+        <mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="material-symbols-outlined">folder_open</mat-icon>
+      My Files
+    </ng-template>
+    <app-files></app-files>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="material-symbols-outlined">attach_file</mat-icon>
+      Add File
+    </ng-template>
+    <app-upload></app-upload>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="material-symbols-outlined">share</mat-icon>
+      File Sharing
+    </ng-template>
+
+    <app-file-sharing></app-file-sharing>
+  </mat-tab>
+</mat-tab-group>
+    </mat-card>
+</section>

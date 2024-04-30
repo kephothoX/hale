@@ -1,0 +1,9 @@
+.history/
+.vscode/
+.angulardoc.json
+file.txt
+SQ_Feedback.txt
+pangea_Feedback.txt
+request.json
+HALE_UX/dist
+dist/*

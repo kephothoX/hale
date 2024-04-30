@@ -1,0 +1,62 @@
+<section>
+    <mat-card class="card">
+      <mat-card-title>
+        <h2>Active Bookings</h2>
+      </mat-card-title>
+    <mat-card-content *ngIf="Bookings">
+      <div class="table-responsive">
+        <mat-table matSort cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)"
+          class="mat-elevation-z8 table" cdkDrag [dataSource]="Bookings">
+
+          <ng-container matColumnDef="customer_id">
+            <mat-header-cell *matHeaderCellDef>Customer ID </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="text-warn">
+              <h3 class="fs-3"> {{ element.customer_id }} </h3>
+              </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.status  }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="start_at">
+            <mat-header-cell *matHeaderCellDef>Starts At</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.start_at }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-raised-button color="primary" class="text-white" (click)="viewBookingDialog(element.id)">
+                <mat-icon class="material-symbols-outlined">expand</mat-icon>
+                View Booking
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
+          <mat-row (click)="clickedRows.add(row)" [class.table-row-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+
+        </mat-table>
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer>
+      <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [length]="pageLength" [pageSize]="pageSize"
+        showFirstLastButtons aria-label="Select Products"></mat-paginator>
+    </mat-card-footer>
+
+  </mat-card>
+
+
+
+  <mat-card *ngIf="!Bookings">
+    <mat-card-title>
+      <h2>No Bookings Found....</h2>
+    </mat-card-title>
+  </mat-card>
+
+
+  </section>
