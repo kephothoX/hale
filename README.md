@@ -36,6 +36,10 @@ For Health providers Locations:  [Hale Health Services Locations](https://halehe
 
 Partner Login:  [Hale Health Services Partner Login](https://halehealthservices.vercel.app/admin)
 
+For any queries or clarifications: Refer to my submission email.
+
+*** Preffered Media Devices width of over 1024px ****
+
 
 ## Code scaffolding
 
