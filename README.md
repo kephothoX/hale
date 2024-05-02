@@ -4,7 +4,38 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development  server
 
+Use `ksoldevtestacct@gmail.com` as square test email.
+
 Run `cd ./HALE_UX && npm run start` for a dev server. Navigate to `https://localhost:4201/`. The app will automatically reload if you change any of the source files.
+
+Open `https://localhost:4200/auth/signup/` to register as a new Square Customer.
+To sign in open  `https://localhost:4200/auth/signin/` enter your square customer email 'enter' then open `https://localhost:4200/home` to proceed.
+
+For complete reproduction of  [Hale Health Services Locations](https://localhost:4201/locations) replace `*****` with a valid Google Maps API Key on `/HALE/HALE_UX/src/app/locations/locations.component.ts`
+
+Replace `*****` with a valid Google Maps API Key on `/HALE/HALE_UX/src/app/admin/locations/new-location.component.ts` and in `/HALE/HALE_UX/src/app/admin/locations/edit-location.component.ts`
+
+## Production Server
+
+Open [Hale Health Services](https://halehealthservices.vercel.app/auth/signup) to register as new Square Customer.
+
+Or use `ksoldevtestacct@gmail.com` on [Hale Health Services](https://halehealthservices.vercel.app/auth/signin) to continue.
+
+To book a service navigate to [Hale Health Services Locations](https://halehealthservices.vercel.app/locations) - `Go to Location`.
+
+Bookings Test Location: [Hale Health Service Bookings](https://halehealthservices.vercel.app/locations/view/L3H3J9ES9K3T3)
+
+For Customer online payments: [Hale Health Services Online Payments](https://halehealthservices.vercel.app/checkout/payments) 
+
+
+For Customer invoices: [Hale Health Services Invoices](https://halehealthservices.vercel.app/subscriptions) 
+
+To subscribe for Medical/Health Covers: [Hale Health Services Medical/Health Covers](https://halehealthservices.vercel.app/health-covers) 
+
+For Health providers Locations:  [Hale Health Services Locations](https://halehealthservices.vercel.app/locations)
+
+Partner Login:  [Hale Health Services Partner Login](https://halehealthservices.vercel.app/admin)
+
 
 ## Code scaffolding
 
